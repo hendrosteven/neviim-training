@@ -6,6 +6,7 @@
 package com.neviim.controller;
 
 import com.neviim.entity.Employee;
+import com.neviim.entity.SearchData;
 import com.neviim.service.EmployeeService;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -32,7 +33,18 @@ public class EmployeeController {
         return employeeService.save(employee);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.POST, value = "/search")
+    public List<Employee> findByName(@RequestBody SearchData search) {
+        List<Employee> response = employeeService.findByName(search.getName());
+        return response;
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public boolean delete(@PathVariable("id") String id) {
+        return employeeService.delete(id);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public List<Employee> findAll() {
         List<Employee> response = employeeService.findAll();
         return response;

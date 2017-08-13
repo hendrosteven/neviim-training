@@ -30,8 +30,17 @@ public class EmployeeService {
     public List<Employee> findAll() {
         return repo.findAllEmployee();
     }
-    
-    public Employee findById(String id){
+
+    public List<Employee> findByName(String name) {
+        return repo.findByName("%" + name + "%");
+    }
+
+    public Employee findById(String id) {
         return repo.findOne(id);
+    }
+
+    public boolean delete(String id) {
+        repo.delete(id);
+        return true;
     }
 }
