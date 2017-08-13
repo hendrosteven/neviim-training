@@ -20,6 +20,6 @@ public interface EmployeeRepo extends PagingAndSortingRepository<Employee, Strin
     @Query("SELECT e FROM Employee e")
     public List<Employee> findAllEmployee();
     
-    @Query("SELECT e FROM Employee e WHERE e.name LIKE :name")
+    @Query("SELECT e FROM Employee e WHERE LOWER(e.name) LIKE LOWER(:name)")
     public List<Employee> findByName(@Param("name") String name);
 }
