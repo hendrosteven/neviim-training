@@ -44,7 +44,7 @@ public class EmployeeController {
         return employeeService.delete(id);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    @RequestMapping(method = RequestMethod.GET)
     public List<Employee> findAll() {
         List<Employee> response = employeeService.findAll();
         return response;
