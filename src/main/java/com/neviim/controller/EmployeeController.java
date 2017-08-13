@@ -38,14 +38,9 @@ public class EmployeeController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Callable<List<Employee>> findAll() {
-        return new Callable<List<Employee>>() {
-            @Override
-            public List<Employee> call() throws Exception {
-                List<Employee> response = employeeService.findAll();
-                return response;
-            }
-        };
+    public List<Employee> findAll() {
+        List<Employee> response = employeeService.findAll();
+        return response;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
@@ -53,7 +48,7 @@ public class EmployeeController {
         return new Callable<Employee>() {
             @Override
             public Employee call() throws Exception {
-                return  employeeService.findById(id);
+                return employeeService.findById(id);
             }
         };
     }
