@@ -28,13 +28,8 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public Callable<Employee> save(@RequestBody Employee employee) {
-        return new Callable<Employee>() {
-            @Override
-            public Employee call() throws Exception {
-                return employeeService.save(employee);
-            }
-        };
+    public Employee save(@RequestBody Employee employee) {
+        return employeeService.save(employee);
     }
 
     @RequestMapping(method = RequestMethod.GET)
